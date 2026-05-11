@@ -1,0 +1,1 @@
+[{"id":"1778517882144","type":"code","content":"Get-ChildItem -Directory | Select-Object Name, @{Name=\"Size(MB)\";Expression={\n>>     $size = (Get-ChildItem $_.FullName -Recurse -File -ErrorAction SilentlyContinue | Measure-Object -Property Length -Sum).Sum\n>>     [Math]::Round($size / 1MB, 2)\n>> }} | Sort-Object \"Size(MB)\" -Descending"}]
